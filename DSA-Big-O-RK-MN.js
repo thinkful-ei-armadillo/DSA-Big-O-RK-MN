@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable eqeqeq */
 //1.1) Determine the Big O for the following algorithm: 
 //You are sitting in a room with 15 people. 
 //You want to find a playmate for your dog, preferably of the same breed. 
@@ -62,7 +64,7 @@ function naiveSearch(array, item) {
 function createPairs(arr) {
   for (let i = 0; i < arr.length; i++) {
     for(let j = i + 1; j < arr.length; j++) {
-      console.log(arr[i] + ", " +  arr[j] );
+      console.log(arr[i] + ', ' +  arr[j] );
     }
   }
 }
@@ -127,7 +129,7 @@ function isWhat(n) {
   return true;
 }
 
-console.log(isWhat(11))
+console.log(isWhat(11));
 
 // 11) 
 
@@ -136,28 +138,67 @@ console.log(isWhat(11))
 //calls?   3 of them are at destination and 2 at the start point
 
 //How many moves are needed to complete the puzzle with 3 disks? 
-// with 4 disks? with 5 disks?   with 3 disk 7 moves are needed/ with 5 disk 29 moves
+// with 4 disks? with 5 disks?   with 3 disk 7 moves are needed/ with 5 disk 29 moves/ with 4 disk 15 moves
 
-//What is the runtime of your algorithm?
+//What is the runtime of your algorithm? O(2^n) exponential because n is dependant on the number of disk
 
 //Derive an algorithm to solve the Tower of Hanoi puzzle.
 function hanoi(disk , start, destination, staging){
-    if (disk == 1) {
-        // base case of 1 disk, we know how to solve that
-        console.log("Move disk 1 from post " + start + " to post " + destination);
+  if (disk == 1) {
+    // base case of 1 disk, we know how to solve that
+    console.log('Move disk 1 from post ' + start + ' to post ' + destination);
         
-    } else {
-        // first solve for all except the last disk
-        hanoi(disk - 1, start, staging, destination);
+  } else {
+    // first solve for all except the last disk
+    hanoi(disk - 1, start, staging, destination);
         
-        // now move the last disk
-        console.log("Move disk " + disk  + " from post " + start + " to post " +
+    // now move the last disk
+    console.log('Move disk ' + disk  + ' from post ' + start + ' to post ' +
         destination );
         
-        // now solve for the remaining disks
-        hanoi(disk - 1, staging, destination, start);
+    // now solve for the remaining disks
+    hanoi(disk - 1, staging, destination, start);
         
-    }}
+  }}
     
-    //Implement your algorithm using recursion. Your program should display each movement of the disk from one rod to another.
-    console.log(hanoi(4, 'a', 'c', 'b'))
+//Implement your algorithm using recursion. Your program should display each movement of the disk from one rod to another.
+console.log(hanoi(4, 'a', 'c', 'b'));
+
+
+//Counting Sheep
+//Write a recursive function that counts how many sheep jump over the fence. Your program should take a number as input. 
+//That number should be the number of sheep you have. 
+//The function should display the number along with the message "Another sheep jumps over the fence" until no more sheep are left.
+function countingSheep(num){
+  for(let i = 0; i < num; i++){
+    console.log('another Sheep jumped over the fence');
+  }
+  console.log('no more sheep');
+}
+// 0(n) linear because it makes a loop depending on how big the number is
+console.log(countingSheep(3));
+
+//Write a function called powerCalculator() that takes two parameters, an integer as a base, 
+//and another integer as an exponent. The function returns the value of the base raised to the
+// power of the exponent. Use only exponents greater than or equal to 0 (positive numbers)
+
+function powerCalculator(num, exponent){
+  let product = 1;
+  for(let i = 0; i < exponent; i++){
+    product = product * num;
+  }
+  return product;
+}
+// O(n) because the loop is dependant on the exponent number
+console.log(powerCalculator(10, 2));
+
+//3. Reverse String
+//Write a function that reverses a string. Take a string as input, reverse the string, and return the new string.
+function reverseStr(str){
+  let rStr = "";
+  for(let i = str.length -1 ; i >= 0; i--)
+    rStr += str[i];
+  return rStr;
+}
+//  O(n) because the loop is dependant on the length of the string
+console.log(reverseStr('string'));
